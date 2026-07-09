@@ -12,12 +12,25 @@ if (heading) {
     const lineElement = document.createElement('span');
     lineElement.className = 'line';
 
-    [...line].forEach((character, charIndex) => {
-      const characterElement = document.createElement('span');
-      characterElement.className = 'char';
-      characterElement.textContent = character === ' ' ? '\u00A0' : character;
-      characterElement.style.transitionDelay = `${initialDelay + lineIndex * line.length * charDelay + charIndex * charDelay}ms`;
-      lineElement.appendChild(characterElement);
+    let characterCount = 0;
+    line.split(' ').forEach((word, wordIndex, words) => {
+      const wordElement = document.createElement('span');
+      wordElement.className = 'word';
+
+      [...word].forEach((character) => {
+        const characterElement = document.createElement('span');
+        characterElement.className = 'char';
+        characterElement.textContent = character;
+        characterElement.style.transitionDelay = `${initialDelay + lineIndex * line.length * charDelay + characterCount * charDelay}ms`;
+        wordElement.appendChild(characterElement);
+        characterCount += 1;
+      });
+
+      lineElement.appendChild(wordElement);
+      if (wordIndex < words.length - 1) {
+        lineElement.appendChild(document.createTextNode(' '));
+        characterCount += 1;
+      }
     });
 
     heading.appendChild(lineElement);
@@ -58,3 +71,12 @@ const revealObserver = new IntersectionObserver(
 );
 
 document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+
+const navWrap = document.querySelector('.nav-wrap');
+
+const updateNavigation = () => {
+  navWrap?.classList.toggle('scrolled', window.scrollY > 24);
+};
+
+updateNavigation();
+window.addEventListener('scroll', updateNavigation, { passive: true });
