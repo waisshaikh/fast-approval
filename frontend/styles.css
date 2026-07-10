@@ -46,3 +46,28 @@
 /* Transparent-on-hero navigation, solid after scroll */
 body{padding-top:44px}.hero,.inner-hero{padding-top:0}.hero{min-height:calc(100vh - 44px)}.nav-wrap .nav{background:linear-gradient(180deg,rgba(25,21,17,.48),rgba(25,21,17,.08))!important;color:#fffaf1!important;box-shadow:none;border-bottom:1px solid rgba(255,255,255,.16);transition:background .3s ease,color .3s ease,box-shadow .3s ease,border-color .3s ease}.nav-wrap:not(.scrolled) .nav .nav-links a{color:rgba(255,250,241,.88)}.nav-wrap:not(.scrolled) .nav .nav-links a:hover,.nav-wrap:not(.scrolled) .nav .nav-links a.active{color:#e3bd78}.nav-wrap:not(.scrolled) .logo-image{background:rgba(255,253,249,.94);padding:5px 9px;border-radius:9px}.nav-wrap.scrolled .nav{background:rgba(255,253,249,.97)!important;color:var(--ink)!important;box-shadow:0 6px 24px rgba(40,31,21,.1);border-color:rgba(73,58,38,.1)}.nav-wrap.scrolled .nav .nav-links a{color:#5f5549}.nav-wrap.scrolled .nav .nav-links a:hover,.nav-wrap.scrolled .nav .nav-links a.active{color:var(--blue)}
 @media(max-width:760px){body{padding-top:38px}.hero{min-height:calc(100vh - 38px)}}
+
+/* One-at-a-time floating widget expansion */
+.floating-actions a{display:flex!important;align-items:center!important;justify-content:center!important;width:54px!important;height:54px!important;padding:0!important;overflow:hidden!important}
+.floating-actions a svg{margin:0!important;flex:0 0 auto}
+.floating-actions a.email span,.floating-actions a.whatsapp:after,.floating-actions a.phone:after{display:none!important;opacity:0!important;white-space:nowrap}
+.floating-actions a.whatsapp:is(:hover,:focus-visible,.is-open){width:205px!important;justify-content:flex-start!important;padding-left:15px!important;background:#25d366!important;border-color:#25d366!important;color:#fff!important}
+.floating-actions a.phone:is(:hover,:focus-visible,.is-open){width:182px!important;justify-content:flex-start!important;padding-left:15px!important;background:#3b82f6!important;border-color:#3b82f6!important;color:#fff!important}
+.floating-actions a.email:is(:hover,:focus-visible,.is-open){width:230px!important;justify-content:flex-start!important;padding-left:15px!important;background:#ad8245!important;border-color:#ad8245!important;color:#fff!important}
+.floating-actions a.whatsapp:is(:hover,:focus-visible,.is-open):after,.floating-actions a.phone:is(:hover,:focus-visible,.is-open):after{display:inline!important;opacity:1!important;margin-left:10px}
+.floating-actions a.email:is(:hover,:focus-visible,.is-open) span{display:inline!important;opacity:1!important;margin-left:10px}
+.floating-actions a.whatsapp:not(:hover):not(:focus-visible):not(.is-open),.floating-actions a.phone:not(:hover):not(:focus-visible):not(.is-open),.floating-actions a.email:not(:hover):not(:focus-visible):not(.is-open){width:54px!important;justify-content:center!important;padding:0!important;background:#fff!important}
+@media(max-width:600px){.floating-actions a{width:48px!important;height:48px!important}.floating-actions a.whatsapp:is(:hover,:focus-visible,.is-open){width:190px!important}.floating-actions a.phone:is(:hover,:focus-visible,.is-open){width:162px!important}.floating-actions a.email:is(:hover,:focus-visible,.is-open){width:210px!important}.floating-actions a.whatsapp:not(:hover):not(:focus-visible):not(.is-open),.floating-actions a.phone:not(:hover):not(:focus-visible):not(.is-open),.floating-actions a.email:not(:hover):not(:focus-visible):not(.is-open){width:48px!important}}
+
+/* Keep closed widgets visibly closed; only the active item becomes a label pill */
+.floating-actions{right:12px!important;align-items:flex-end!important}
+.floating-actions a:not(:hover):not(:focus-visible):not(.is-open){width:56px!important;height:56px!important;border-radius:999px!important;padding:0!important;justify-content:center!important;background:#fff!important}
+.floating-actions a:is(:hover,:focus-visible,.is-open){height:56px!important;border-radius:999px!important}
+.floating-actions a.whatsapp:not(:hover):not(:focus-visible):not(.is-open){color:#20a954!important;border-color:#20a954!important}
+.floating-actions a.phone:not(:hover):not(:focus-visible):not(.is-open){color:#3478d4!important;border-color:#3478d4!important}
+.floating-actions a.email:not(:hover):not(:focus-visible):not(.is-open){color:#ad8245!important;border-color:#ad8245!important}
+@media(max-width:600px){.floating-actions{right:8px!important}.floating-actions a:not(:hover):not(:focus-visible):not(.is-open){width:48px!important;height:48px!important}.floating-actions a:is(:hover,:focus-visible,.is-open){height:48px!important}}
+
+/* Right-lock each widget independently while one expands left */
+.floating-actions{display:grid!important;justify-items:end!important;width:max-content!important}
+.floating-actions a{justify-self:end!important}

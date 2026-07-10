@@ -80,3 +80,23 @@ const updateNavigation = () => {
 
 updateNavigation();
 window.addEventListener('scroll', updateNavigation, { passive: true });
+
+document.querySelectorAll('.floating-actions').forEach((dock) => {
+  const actions = [...dock.querySelectorAll('a')];
+
+  const openOnly = (activeAction) => {
+    actions.forEach((action) => {
+      action.classList.toggle('is-open', action === activeAction);
+    });
+  };
+
+  actions.forEach((action) => {
+    action.addEventListener('pointerenter', () => openOnly(action));
+    action.addEventListener('focus', () => openOnly(action));
+    action.addEventListener('click', () => openOnly(action));
+  });
+
+  dock.addEventListener('pointerleave', () => {
+    actions.forEach((action) => action.classList.remove('is-open'));
+  });
+});
