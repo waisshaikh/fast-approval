@@ -64,6 +64,7 @@ body{padding-top:44px}.hero,.inner-hero{padding-top:0}.hero{min-height:calc(100v
 .floating-actions a:not(:hover):not(:focus-visible):not(.is-open){width:56px!important;height:56px!important;border-radius:999px!important;padding:0!important;justify-content:center!important;background:#fff!important}
 .floating-actions a:is(:hover,:focus-visible,.is-open){height:56px!important;border-radius:999px!important}
 .floating-actions a.whatsapp:not(:hover):not(:focus-visible):not(.is-open){color:#20a954!important;border-color:#20a954!important}
+.floating-actions .fa-whatsapp{font-size:25px;line-height:1;flex:none}
 .floating-actions a.phone:not(:hover):not(:focus-visible):not(.is-open){color:#3478d4!important;border-color:#3478d4!important}
 .floating-actions a.email:not(:hover):not(:focus-visible):not(.is-open){color:#ad8245!important;border-color:#ad8245!important}
 @media(max-width:600px){.floating-actions{right:8px!important}.floating-actions a:not(:hover):not(:focus-visible):not(.is-open){width:48px!important;height:48px!important}.floating-actions a:is(:hover,:focus-visible,.is-open){height:48px!important}}
